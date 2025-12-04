@@ -13,13 +13,15 @@
 <svelte:head>
 	<link rel="icon" href={favicon} />
 </svelte:head>
-<div>
+<div class="h-screen flex flex-col">
 	<Nav />
 
-	<div class="flex">
-		<SideBar />
-		<div class="p-12 w-full">
-			{@render children()}
+	<div class="flex flex-1">
+		<SideBar  />
+		<div class="flex-1 overflow-x-auto">
+			<div class="min-w-max border-collapse w-full p-8">
+				{@render children()}
+			</div>
 		</div>
 	</div>
 

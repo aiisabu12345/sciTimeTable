@@ -4,7 +4,7 @@
 </script>
 
 <nav
-    class="w-full px-12 bg-[#FF7A00] text-white py-3 flex items-center justify-between"
+    class="w-full px-2 lg:px-12 bg-[#FF7A00] text-white py-3 flex items-center justify-between"
 >
     <div class="flex  space-x-2 items-center h-full">
         <img
@@ -12,10 +12,10 @@
             src="https://img5.pic.in.th/file/secure-sv1/kmitl-seal.webp"
             alt=""
         />
-        <h1 class="text-2xl font-semibold">Sci Time Table</h1>
+        <h1 class="text-base sm:text-2xl font-semibold">Sci Time Table</h1>
     </div>
 
-    <div class="flex items-center gap-3 text-2xl">
+    <div class="flex items-center gap-1 lg:gap-3 text-2xl">
         <div
             class="w-8 h-8 rounded-full bg-white/30 flex items-center justify-center"
         >
@@ -37,6 +37,6 @@
                 /></svg
             >
         </div>
-        <span>{username}</span>
+        <span class="text-base lg:text-2xl">{username}</span>
     </div>
 </nav>

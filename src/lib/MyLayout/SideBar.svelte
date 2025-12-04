@@ -2,7 +2,15 @@
   import { page } from "$app/stores";
 
   let openExcelMenu = false; // toggle menu
+  // เปิดเมนูอัตโนมัติถ้าอยู่ใน /manage/*
+  $: if ($page.url.pathname.startsWith("/manage")) {
+    openExcelMenu = true;
+  }
 
+  // ปิดเมนูถ้าออกจาก manage
+  $: if (!$page.url.pathname.startsWith("/manage")) {
+    openExcelMenu = false;
+  }
   const menu = [
     {
       name: "หน้าแรก",
@@ -19,9 +27,10 @@
       path: "/manage",
       icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-folder-pen-icon lucide-folder-pen"><path d="M2 11.5V5a2 2 0 0 1 2-2h3.9c.7 0 1.3.3 1.7.9l.8 1.2c.4.6 1 .9 1.7.9H20a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-9.5"/><path d="M11.378 13.626a1 1 0 1 0-3.004-3.004l-5.01 5.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z"/></svg>`,
       children: [
-        { name: "จัดการภาควิชา", path: "/manage/Department" },
-        { name: "จัดการหลักสูตร", path: "/manage/course" },
-        { name: "จัดการรายวิชา", path: "/manage/subject" },
+        { name: "- จัดการภาควิชา", path: "/manage/department" },
+        { name: "- จัดการหลักสูตร", path: "/manage/course" },
+        { name: "- จัดการรายวิชา", path: "/manage/subject" },
+        { name: "- จัดการอื่นๆ", path: "/manage/another" },
       ],
     },
     {
@@ -33,7 +42,7 @@
 </script>
 
 <aside
-  class="min-w-60 bg-white border-r border-gray-100 shadow-lg h-screen p-4 flex flex-col gap-2"
+  class="min-w-60  h-full bg-white border-r border-gray-100 shadow-lg p-4 flex flex-col gap-2"
 >
   {#each menu as item}
     {#if item.children}
